@@ -102,6 +102,40 @@ public class LinkedList{
         size--;
         return val;
     }
+
+    public int itrSearch(int key) { // Iterative search O(n)
+        Node temp = head;
+        int i=0;
+
+        while(temp!=null) {
+            if(temp.data == key) {   // key found
+                return i;
+            }
+            temp = temp.next;
+            i++;
+        }
+        return -1;
+    }
+
+    public int helper(Node head, int key) {
+        if(head == null) {
+            return -1;
+        }
+        
+        if(head.data==key) {
+            return 0;
+        }
+
+        int idx = helper(head.next, key);
+        if(idx == -1) {
+            return -1;
+        }
+        return idx+1;
+    }
+
+    public int recSearch(int key) {
+        return helper(head, key);
+    }
    
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
@@ -114,9 +148,15 @@ public class LinkedList{
         ll.addLast(4);
         ll.add(2, 7); // it add nodes anywhere between start and end node
         ll.addLast(5);
-        ll.print();
-        ll.removeFirst(); // it removes first node
-        ll.removeLast(); // it reomves last node
+       // ll.print();
+       // ll.removeFirst(); // it removes first node
+       // ll.removeLast(); // it reomves last node
+       System.out.println(ll.itrSearch(4)); // 3
+       System.out.println(ll.itrSearch(9)); // -1
+
+       System.out.println(ll.recSearch(4)); // 3
+       System.out.println(ll.recSearch(9)); // -1
+
         ll.print();
         System.out.println("size of nodes are  "+size);
     }
