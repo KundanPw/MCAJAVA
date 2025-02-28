@@ -163,31 +163,67 @@ public class LinkedList{
         prev.next = prev.next.next;
         return;
     }
+
+    // slow - fast approach
+    public Node findMid(Node head) {  // helper
+        Node slow = head;
+        Node fast = head;
+
+        while(fast != null && fast.next != null) {
+            slow = slow.next; // +1
+            fast = slow.next.next; // +2
+        }
+        return slow; // slow is my middle
+    }
+
+    public boolean checkPalindrome() {
+        if(head == null||head.next == null) {
+            return true;
+        }
+
+        // step1- find mid
+        Node midNode = findMid(head);
+
+        if(midNode != null && midNode.next != null) { // In case of an even-length list, this will also include the middle element.
+            midNode = midNode.next;
+        }
+
+        // step2- reverse 2nd half
+        Node prev = null;
+        Node curr = midNode;
+        Node next;
+        while(curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        Node right = prev; // right half head
+        Node left = head;
+
+        // step3- check left half and right half
+        while(right != null) {
+            if(left.data != right.data) {
+                return false;
+            }
+            left = left.next;
+            right = right.next;
+        }
+
+        return true;
+
+    }
    
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
+
+        ll.addLast(1);
+        ll.addLast(2);
+        ll.addLast(3);
+        ll.addLast(1);
+        ll.print();
+        System.out.println(ll.checkPalindrome());
         
-        // Node newNode = new Node(4);
-        // System.out.println(newNode.data);
-
-        ll.addFirst(2);
-        ll.addFirst(3);
-        ll.addLast(4);
-        ll.add(2, 7); // it add nodes anywhere between start and end node
-        ll.addLast(5);
-       // ll.print();
-       // ll.removeFirst(); // it removes first node
-       // ll.removeLast(); // it reomves last node
-      // System.out.println(ll.itrSearch(4)); // 3
-      // System.out.println(ll.itrSearch(9)); // -1
-
-      // System.out.println(ll.recSearch(4)); // 3
-      // System.out.println(ll.recSearch(9)); // -1
-
-        ll.print();
-
-        ll.deleteNthFromEnd(4);
-        ll.print();
-        // System.out.println("size of nodes are  "+size);
     }
 }
