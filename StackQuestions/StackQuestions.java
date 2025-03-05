@@ -28,9 +28,38 @@ public class StackQuestions {
         return result.toString();
     }
 
+    public static void reverseStack(Stack<Integer> s) {   // Q3. Reverse a stack
+        if(s.isEmpty()) {
+            return;
+        }
+
+        int top = s.pop();
+        reverseStack(s);
+        pushAtBottom(s, top);
+    }
+
+    public static void printStack(Stack<Integer> s) {
+        Stack<Integer> temp = new Stack<>();
+        while (!s.isEmpty()) {
+            int curr = s.pop();
+            System.out.println(curr);
+            temp.push(curr);
+        }
+
+        while(!temp.isEmpty()) {
+            s.push(temp.pop());
+        }
+    }
+
     public static void main(String args[]) {
-       String str = "abc";
-       String result = reverseString(str);
-       System.out.println(result);
+       Stack<Integer> s = new Stack<>();
+       s.push(1);
+       s.push(2);
+       s.push(3);
+       System.out.println("Original stack item");
+       printStack(s);
+       reverseStack(s);
+       System.out.println("Reverse stack item");
+       printStack(s);
     }
 }
