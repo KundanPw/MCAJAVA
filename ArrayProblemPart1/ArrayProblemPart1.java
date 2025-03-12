@@ -18,7 +18,7 @@ public class ArrayProblemPart1 {
         return largest;
     }
 
-    public static void reverseArray(int number[]) {
+    public static void reverseArray(int number[]) {  //Q2. Find the reverse of array
         int first = 0, last = number.length-1;
         while(first < last) {
             int temp = number[last];
@@ -26,6 +26,16 @@ public class ArrayProblemPart1 {
             number[first] = temp;
             first++;
             last--;
+        }
+    }
+
+    public static void pairsArray(int number[]) {  // Q3. Find the pairs in array
+        for(int i=0; i<number.length; i++) {
+            int curr = number[i];
+            for(int j=i+1; j<number.length; j++) {
+                System.out.print("("+curr+","+number[j]+") ");
+            }
+            System.out.println();
         }
     }
 
@@ -44,8 +54,10 @@ public class ArrayProblemPart1 {
         // System.out.println("Largest number is "+largest);
 
         int num[] = {2, 5, 9, 10, 12};
-        printArray(num);
-        reverseArray(num);
-        printArray(num);
+        //printArray(num);
+        //reverseArray(num);
+        //printArray(num);
+
+        pairsArray(num);
     }
 }
