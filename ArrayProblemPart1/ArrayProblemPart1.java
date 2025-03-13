@@ -100,6 +100,19 @@ public class ArrayProblemPart1 {
 
     }
 
+    public static void maxSubArraySumKADANES(int number[]) {
+        int ms = Integer.MIN_VALUE;
+        int cs = 0;
+        for(int i=0; i<number.length; i++) {
+            cs = cs+number[i];
+            if(cs<0) {
+                cs=0;
+            }
+            ms = Math.max(cs, ms);
+        }
+        System.out.println("Max sum is "+ms);
+    }
+
     public static void printArray(int number[]) {
         for(int i=0; i<number.length; i++) {
             System.out.print(number[i]+" ");
@@ -121,6 +134,7 @@ public class ArrayProblemPart1 {
         // pairsArray(num);
         // printSubArray(num);
         // maxSubArraySum(num);
-        maxSubArraySumPrefixSum(num);
+        // maxSubArraySumPrefixSum(num);
+        maxSubArraySumKADANES(num);
     }
 }
