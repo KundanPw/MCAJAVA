@@ -43,7 +43,7 @@ public class ArrayProblemPart1 {
         int tp=0; // Find total pairs of Sub Array
         for(int i=0; i<number.length; i++) {
             int start=i;
-            for(int j=0; j<number.length; j++) {
+            for(int j=i; j<number.length; j++) {
                 int end=j;
                 for(int k=start; k<=end; k++) {
                     System.out.print(number[k]+" ");
@@ -53,6 +53,26 @@ public class ArrayProblemPart1 {
             }
         }
         System.out.println("Total pairs is "+tp);
+    }
+
+    public static void maxSubArraySum(int number[]) { // Q5. Find max subarray sum using Bruete forcce
+        int currSum = 0;
+        int maxSum = Integer.MIN_VALUE;
+        for(int i=0; i<number.length; i++) {
+            int start=i;
+            for(int j=i; j<number.length; j++) {
+                int end=j;
+                for(int k=start; k<=end; k++) {
+                    currSum += number[k];
+                }
+                System.out.println(currSum);
+                if(maxSum<currSum) {
+                    maxSum = currSum;
+                }
+            }
+        }
+        System.out.println("Max sum is "+maxSum);
+
     }
 
     public static void printArray(int number[]) {
@@ -68,12 +88,13 @@ public class ArrayProblemPart1 {
         // int largest = largestNumber(num);
         // System.out.println("Largest number is "+largest);
 
-        int num[] = {2, 5, 9, 10, 12};
+        int num[] = {2, 4, 6, 8, 10};
         //printArray(num);
         //reverseArray(num);
         //printArray(num);
 
         // pairsArray(num);
         printSubArray(num);
+        maxSubArraySum(num);
     }
 }
