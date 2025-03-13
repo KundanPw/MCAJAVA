@@ -55,13 +55,14 @@ public class ArrayProblemPart1 {
         System.out.println("Total pairs is "+tp);
     }
 
-    public static void maxSubArraySum(int number[]) { // Q5. Find max subarray sum using Bruete forcce
+    public static void maxSubArraySum(int number[]) { // Q5. Find max subarray sum using Bruete force
         int currSum = 0;
         int maxSum = Integer.MIN_VALUE;
         for(int i=0; i<number.length; i++) {
             int start=i;
             for(int j=i; j<number.length; j++) {
                 int end=j;
+                currSum=0;
                 for(int k=start; k<=end; k++) {
                     currSum += number[k];
                 }
@@ -69,6 +70,30 @@ public class ArrayProblemPart1 {
                 if(maxSum<currSum) {
                     maxSum = currSum;
                 }
+            }
+        }
+        System.out.println("Max sum is "+maxSum);
+
+    }
+
+    public static void maxSubArraySumPrefixSum(int number[]) { //Q5. Find max subarray sum using prefix sum
+        int currSum=0;
+        int maxSum=Integer.MIN_VALUE;
+        int prefix[]=new int[number.length];
+        prefix[0]=number[0];
+        // calculate prefix array
+        for(int i=1; i<prefix.length; i++) {
+            prefix[i] = prefix[i-1]+number[i];
+        }
+
+        for(int i=0; i<number.length; i++) {
+            int start=i;
+            for(int j=i; j<number.length; j++) {
+                int end=j;
+               currSum = start==0?prefix[end] : prefix[end] - prefix[start-1];
+            }
+            if(maxSum<currSum) {
+                maxSum = currSum;
             }
         }
         System.out.println("Max sum is "+maxSum);
@@ -94,7 +119,8 @@ public class ArrayProblemPart1 {
         //printArray(num);
 
         // pairsArray(num);
-        printSubArray(num);
-        maxSubArraySum(num);
+        // printSubArray(num);
+        // maxSubArraySum(num);
+        maxSubArraySumPrefixSum(num);
     }
 }
