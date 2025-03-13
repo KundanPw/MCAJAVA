@@ -40,6 +40,7 @@ public class ArrayProblemPart1 {
     }
 
     public static void printSubArray(int number[]) { // Q4. Print Subarray
+        int tp=0; // Find total pairs of Sub Array
         for(int i=0; i<number.length; i++) {
             int start=i;
             for(int j=0; j<number.length; j++) {
@@ -47,9 +48,11 @@ public class ArrayProblemPart1 {
                 for(int k=start; k<=end; k++) {
                     System.out.print(number[k]+" ");
                 }
+                tp++;
                 System.out.println();
             }
         }
+        System.out.println("Total pairs is "+tp);
     }
 
     public static void printArray(int number[]) {
