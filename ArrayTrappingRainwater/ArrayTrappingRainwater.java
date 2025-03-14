@@ -1,7 +1,14 @@
 import java.util.*;
 
+/*
+ * Trapping Rainwater: Given n non-negative integers representing and elevation(height) map where the width of each bar is 1,
+ * computer how much water it can trap after raining- Example: height=[4, 2, 0, 6, 3, 2, 5]
+ */
+
+
 public class ArrayTrappingRainwater {
     public static int trappedRainWater(int height[]) {
+
         // calculate left max boundary - array
         int n = height.length;
         int leftMax[] = new int[n];
