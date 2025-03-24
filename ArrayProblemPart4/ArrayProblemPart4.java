@@ -21,6 +21,34 @@ public class ArrayProblemPart4 {
         }
         return secondLargest;
     }
+
+    public static List<Integer> getThreeLargestElement(int arr[]) { // Q3. Findout the three largest number from array
+
+        int fst = Integer.MIN_VALUE, sec = Integer.MIN_VALUE,  trd = Integer.MIN_VALUE;
+
+        for(int a:arr) {
+            if(fst < a) {
+                trd = sec;
+                sec = fst;
+                fst = a;
+            } else if(sec < a && fst != a) {
+                trd = sec;
+                sec = a;
+            } else if(trd < a && fst != a && sec != a) {
+                trd = a;
+            }
+        }
+
+        List<Integer> res = new ArrayList<>();
+        if(fst == Integer.MIN_VALUE) return res;
+        res.add(fst);
+        if(sec == Integer.MIN_VALUE) return res;
+        res.add(sec);
+        if(trd == Integer.MIN_VALUE) return res;
+        res.add(trd);
+
+        return res;
+    }
     
 
     public static void main(String[] ars) {
@@ -31,7 +59,11 @@ public class ArrayProblemPart4 {
         //     System.out.print(a+" ");
         // }
 
-        System.out.println(secondLargestElement(arr));
+        // System.out.println(secondLargestElement(arr));
 
+        List<Integer> res = getThreeLargestElement(arr);
+        for(int a: res) {
+            System.out.print(a+" ");
+        }
     }
 }
