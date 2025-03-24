@@ -67,7 +67,24 @@ public class ArrayProblemPart4 {
                 res.add(arr[i]);
             }
         }
+
         return res;
+    }
+
+    static boolean isSortedArray(int arr[]) { // Q5 Check given array is sorted if not sorted then it return false or otherwise it return true on sorted
+        int n = arr.length;
+        if(n==0||n==1) {
+            return true;
+        }
+
+        for(int i=1; i<n; i++) {
+            if(arr[i-1] > arr[i]) { // unsorted pair found
+                return false;
+            }
+        }
+
+        // no unsroted pair found
+        return true;
     }
     
 
@@ -86,11 +103,18 @@ public class ArrayProblemPart4 {
         //     System.out.print(a+" ");
         // }
 
-        int arr[] = {16, 17, 4, 3, 5, 2};
+        // int arr[] = {16, 17, 4, 3, 5, 2};
 
-        ArrayList<Integer> result = leaderElement(arr);
-        for(int a:result) {
-            System.out.print(a+" ");
+        // ArrayList<Integer> result = leaderElement(arr);
+        // for(int a:result) {
+        //     System.out.print(a+" ");
+        // }
+
+        int arr[] = {4, 8, 9, 10, 15};
+        if(isSortedArray(arr)) {
+            System.out.print("Sorted array");
+        } else {
+            System.out.print("Not sorted array");
         }
     }
 }
