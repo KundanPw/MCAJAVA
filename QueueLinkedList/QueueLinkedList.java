@@ -11,6 +11,7 @@ public class QueueLinkedList {
     }
 
     static class Queue{
+        
         static Node head = null;
         static Node tail = null;
 

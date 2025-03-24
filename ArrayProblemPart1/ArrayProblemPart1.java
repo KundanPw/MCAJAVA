@@ -100,7 +100,7 @@ public class ArrayProblemPart1 {
 
     }
 
-    public static void maxSubArraySumKADANES(int number[]) {
+    public static void maxSubArraySumKADANES(int number[]) { //Q5. Find max subarray sum using KADANE'S
         int ms = Integer.MIN_VALUE;
         int cs = 0;
         for(int i=0; i<number.length; i++) {
