@@ -86,6 +86,21 @@ public class ArrayProblemPart4 {
         // no unsroted pair found
         return true;
     }
+
+    static int removeDuplicates(int arr[]) { // Q6. Given a sorted array arr[] of size n, the goal is to rearrange the array so that all distinct elements appear at the beginning is sorted order. Additionally, return the length of this distinct sorted subarray
+        int n=arr.length;
+        if(n<=1) {
+            return n;
+        }
+
+        int idx = 1;
+        for(int i=1; i<n; i++) {
+            if(arr[i]!=arr[i-1]) {
+                arr[idx++] = arr[i];
+            }
+        }
+        return idx;
+    }
     
 
     public static void main(String[] ars) {
@@ -110,11 +125,17 @@ public class ArrayProblemPart4 {
         //     System.out.print(a+" ");
         // }
 
-        int arr[] = {4, 8, 9, 10, 15};
-        if(isSortedArray(arr)) {
-            System.out.print("Sorted array");
-        } else {
-            System.out.print("Not sorted array");
+        // int arr[] = {4, 8, 9, 10, 15};
+        // if(isSortedArray(arr)) {
+        //     System.out.print("Sorted array");
+        // } else {
+        //     System.out.print("Not sorted array");
+        // }
+
+        int arr[] = {1, 2, 2, 3, 4, 4, 4, 5, 5};
+        int res = removeDuplicates(arr);
+        for(int i=0; i<res; i++) {
+            System.out.print(arr[i]+" ");
         }
     }
 }
