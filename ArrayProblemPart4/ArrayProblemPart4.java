@@ -22,7 +22,7 @@ public class ArrayProblemPart4 {
         return secondLargest;
     }
 
-    public static List<Integer> getThreeLargestElement(int arr[]) { // Q3. Findout the three largest number from array
+    public static List<Integer> getThreeLargestElement(int arr[]) { // Q3. Findout the three largest number from array and also product of those largest number
 
         int fst = Integer.MIN_VALUE, sec = Integer.MIN_VALUE,  trd = Integer.MIN_VALUE;
 
@@ -38,6 +38,8 @@ public class ArrayProblemPart4 {
                 trd = a;
             }
         }
+
+        System.out.println("Multiplication of three largest number is "+fst*sec*trd);
 
         List<Integer> res = new ArrayList<>();
         if(fst == Integer.MIN_VALUE) return res;
@@ -104,7 +106,7 @@ public class ArrayProblemPart4 {
     
 
     public static void main(String[] ars) {
-        //int arr[] = {10, 70, 89, 40, 5};
+        int arr[] = {20, 3, 5, 6, 10};
 
         // ArrayList<Integer> res = alternatePrintArray(arr);
         // for(int a: res) {
@@ -113,10 +115,10 @@ public class ArrayProblemPart4 {
 
         // System.out.println(secondLargestElement(arr));
 
-        // List<Integer> res = getThreeLargestElement(arr);
-        // for(int a: res) {
-        //     System.out.print(a+" ");
-        // }
+        List<Integer> res = getThreeLargestElement(arr);
+        for(int a: res) {
+            System.out.print(a+" ");
+        }
 
         // int arr[] = {16, 17, 4, 3, 5, 2};
 
@@ -132,10 +134,10 @@ public class ArrayProblemPart4 {
         //     System.out.print("Not sorted array");
         // }
 
-        int arr[] = {1, 2, 2, 3, 4, 4, 4, 5, 5};
-        int res = removeDuplicates(arr);
-        for(int i=0; i<res; i++) {
-            System.out.print(arr[i]+" ");
-        }
+        // int arr[] = {1, 2, 2, 3, 4, 4, 4, 5, 5};
+        // int res = removeDuplicates(arr);
+        // for(int i=0; i<res; i++) {
+        //     System.out.print(arr[i]+" ");
+        // }
     }
 }

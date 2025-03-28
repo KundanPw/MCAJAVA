@@ -1,7 +1,7 @@
 public class LinkedList{
     public static class Node{
         int data;
-         Node next;
+        Node next;
         public Node(int data) {
             this.data = data;
             this.next = null;
@@ -22,7 +22,7 @@ public class LinkedList{
         }
         System.out.println("null");
     }
-
+  
     public void addFirst(int data) {
         Node newNode = new Node(data);
         size++;
