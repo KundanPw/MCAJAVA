@@ -44,6 +44,25 @@ public class ArrayInterview1 {
 
     }
 
+    public static void reverseInGroups(int num[], int k) {
+
+        // Q3. Given an array arr[] and an integer k, the task is to reverse every subarray formed by consecutive K elements Ex: arr[]=[1, 2, 3, 4, 5, 6, 7, 8, 9], k=3 the output: 3, 2, 1, 6, 5, 4, 8, 7
+        int n = num.length;
+        for(int i=0; i<n; i+=k) {
+            int left = i;
+            int right = Math.min(i+k-1, n-1);
+
+            // Reverse the sub-array
+            while(left<right) {
+                int temp = num[left];
+                num[left] = num[right];
+                num[right] = temp;
+                left++;
+                right--;
+            }
+        }
+    }
+
     public static void printArray(int arr[]) {
         for(int i=0; i<arr.length; i++) {
             System.out.print(arr[i]+" ");
@@ -54,9 +73,12 @@ public class ArrayInterview1 {
         // int[] arr = {1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 1};
         // System.out.println(maxConsecutiveCount(arr));
 
-        int[] num = {0, 5, 0, 3, 4, 0, 2, 1};
+        //int[] num = {0, 5, 0, 3, 4, 0, 2, 1};
+        // pushZeroesToEnd(num);
+        
+        int[] num = {1, 2, 3, 4, 5, 6, 7, 8};
         printArray(num);
-        pushZeroesToEnd(num);
+        reverseInGroups(num, 3);
         printArray(num);
     }
 }
