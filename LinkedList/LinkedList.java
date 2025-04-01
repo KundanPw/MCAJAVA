@@ -103,6 +103,31 @@ public class LinkedList{
         return val;
     }
 
+    public void removeAtIndex(int idx) {
+        if(idx==0) {
+            removeFirst();
+            return;
+        }
+
+        Node temp = head;
+        Node prev = null;
+        int count=0;
+
+        while (temp != null && count<idx) {
+            prev = temp;
+            temp = temp.next;
+            count++;
+        }
+
+        if(temp==null) {
+            System.out.println("Index is out of bound");
+            return;
+        }
+
+        prev.next = temp.next; // delete the node
+        size--;
+    }
+
     public int itrSearch(int key) { // Iterative search O(n)
         Node temp = head;
         int i=0;
@@ -362,9 +387,11 @@ public class LinkedList{
         ll.addLast(3);
         ll.addLast(4);
         ll.addLast(5);
+        ll.print();
+        ll.removeAtIndex(2);
         // 1->2->3->4->5
         ll.print();
-        ll.ZigZag();
-        ll.print();
+        // ll.ZigZag();
+        // ll.print();
     }
 }
